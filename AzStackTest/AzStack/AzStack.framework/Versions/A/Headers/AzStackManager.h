@@ -97,4 +97,12 @@ typedef void (^ConnectWithCompletion)(NSString * authenticatedAzStackUserID, NSE
 
 - (void) processRemoteNotify:(NSDictionary *)userInfo;
 
+- (void) setHiddenButtonCallInChatNavigationBar: (BOOL) hidden;
+
+- (void) disconnectAzServer;
+
+- (void) clearAllAzData;
+
+- (void) disconnectAndClearAllData;
+
 @end
