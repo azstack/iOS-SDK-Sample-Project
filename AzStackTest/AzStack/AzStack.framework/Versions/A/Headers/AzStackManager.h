@@ -34,6 +34,7 @@ typedef void (^ConnectWithCompletion)(NSString * authenticatedAzStackUserID, NSE
 - (UINavigationController *) azRequestNavigationToPushChatController;
 @optional
 - (void) azUpdateUnreadMessageCount: (int) unreadCount;
+- (UIViewController *) azRequestSelectUsersController: (UIViewController *) chatController;
 @end
 
 @protocol AzCallDelegate <NSObject>
@@ -78,6 +79,8 @@ typedef void (^ConnectWithCompletion)(NSString * authenticatedAzStackUserID, NSE
 - (UIViewController *) createChatGroup;
 
 - (UIViewController *) createChat11;
+
+- (void) doneSelectUsers: (UIViewController *) chatController withListAzStackUsers: (NSArray *) listAzStackUsers;
 
 - (void) sendUserInfoToAzStack:(NSArray *) userInfos withTarget: (int) target;
 
