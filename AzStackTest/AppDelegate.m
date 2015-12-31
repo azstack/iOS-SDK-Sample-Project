@@ -24,9 +24,10 @@
     
     // Set APP ID
     [[AzStackManager instance] setAppId:@"26870527d2ac628002dda81be54217cf"];
+    // Set APP PUBLIC KEY
+    [[AzStackManager instance] setPublicKey:@"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq9s407QkMiZkXF0juCGjti6iWUDzqEmP+Urs3+g2zOf+rbIAZVZItS5a4BZlv3Dux3Xnmhrz240OZMBO1cNc poEQNij1duZlpJY8BJiptlrj3C+K/PSp0ijllnckwvYYpApm3RxC8ITvpmY3IZTrRKloC/XoRe39p68ARtxXKKW5I/YYxFucY91b6AEOUNaqMFEdLzpO/Dgccaxoc+N1SMfZOKue7aH0ZQIksLN7OQGVoiuf9wR2iSz3+FA+mMzRIP+lDxI4JE42Vvn1sYmMCY1GkkWUSzdQsfgnAIvnbepM2E4/95yMdRPP/k2Qdq9ja/mwEMTfA0yPUZ7LiywoZwIDAQAB"];
     
     // SET AZSTACK DELEGATE
-    [AzStackManager instance].azAuthenticationDelegate = [ThirdPartyImplement instance];
     [AzStackManager instance].azUserInfoDelegate = [ThirdPartyImplement instance];
     [AzStackManager instance].azChatDelegate = [ThirdPartyImplement instance];
     [AzStackManager instance].azCallDelegate = [ThirdPartyImplement instance];
@@ -34,14 +35,14 @@
     // INITIAL
     [[AzStackManager instance] setTintColorNavigationBar:[UIColor blackColor]];
     [[AzStackManager instance] setLanguage:@"en"];
-    [[AzStackManager instance] setServerType:AZSERVER_TEST];
+    [[AzStackManager instance] setDebugLog:YES];
     [[AzStackManager instance] initial];
     
     AzStackTestController * azStackTestController = [[AzStackTestController alloc] init];
     azStackTestController.title = @"Authenticating ...";
     
     // CONNECT
-    [[AzStackManager instance] connectWithCompletion:^(NSString * authenticatedAzStackUserID, NSError *error, BOOL successful) {
+    [[AzStackManager instance] connectWithAzStackUserId:@"user1" userCredentials:@"user1_credentials" fullname:@"user1" completion:^(NSString *authenticatedAzStackUserID, NSError *error, BOOL successful) {
         if (successful) {
             NSLog(@"Authent successful, authenticatedAzStackUserID: %@", authenticatedAzStackUserID);
             dispatch_async(dispatch_get_main_queue(), ^{

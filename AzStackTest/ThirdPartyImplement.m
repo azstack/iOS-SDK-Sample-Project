@@ -31,34 +31,6 @@ static ThirdPartyImplement *ins;
     return ins;
 }
 
-#pragma mark AzStackLoginDelegate
-
-- (void) azNonceReceived:(NSString *)nonce {
-    NSString* azStackUserID = @"user1";//use user1 when run this project in Simulator
-//    NSString* azStackUserID = @"user2";//use user2 when run this project in your Device
-    
-    NSString* url = [NSString stringWithFormat:@"http://azstack.com/test/gen_token_test.php?azStackUserID=%@&nonce=%@", azStackUserID, nonce];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setHTTPMethod:@"GET"];
-    [request setURL:[NSURL URLWithString:url]];
-    [request setTimeoutInterval:60];
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse * response, NSData * data, NSError * connectionError) {
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-        if ([httpResponse statusCode] == 200) {
-            NSString * resGetToken = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            
-            if (resGetToken) {
-                NSData *jsonData = [resGetToken dataUsingEncoding:NSUTF8StringEncoding];
-                id json = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-                NSString * token =  json[@"token"];
-                [[AzStackManager instance] authenticateWithIdentityToken:token];
-            }
-        }
-    }];
-}
-
 #pragma mark AzStackUserInfoDelegate
 
 - (void) azRequestUserInfo:(NSArray *)azStackUserIds withTarget:(int)target{
@@ -82,7 +54,7 @@ static ThirdPartyImplement *ins;
     [[AzStackManager instance] sendUserInfoToAzStack:userInfoArrays withTarget:target];
 }
 
-- (NSArray *) azRequestListUser{
+- (NSArray *) azRequestFriendList{
     NSMutableArray * users = [[NSMutableArray alloc] init];
     AzStackUser * user1 = [[AzStackUser alloc] init];
     user1.fullname = @"User 1";
@@ -109,8 +81,8 @@ static ThirdPartyImplement *ins;
     user6.azStackUserId = @"user6";
     
     AzStackUser * user7 = [[AzStackUser alloc] init];
-    user7.fullname = @"User 7";
-    user7.azStackUserId = @"user7";
+    user7.fullname = @"phunv";
+    user7.azStackUserId = @"phunv";
     
     [users addObject:user1];
     [users addObject:user2];

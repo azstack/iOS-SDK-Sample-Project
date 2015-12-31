@@ -15,11 +15,9 @@
 @class AzStackUser;
 
 typedef void (^ConnectWithCompletion)(NSString * authenticatedAzStackUserID, NSError * error, BOOL successful);
-
-@protocol AzAuthenticationDelegate <NSObject>
-@required
-- (void) azNonceReceived: (NSString *) nonce;
-@end
+typedef void (^GetBlockUserInfoWithComplete)(NSString * azStackUserId, int blockType, NSError * error);
+typedef void (^BlockUnblockUserWithComplete)(NSString * azStackUserId, int result, NSError * error);
+typedef void (^GetListBlockUserWithComplete)(NSArray * listAzUserIdsBlocked, NSError * error);
 
 @protocol AzUserInfoDelegate <NSObject>
 @required
@@ -35,6 +33,7 @@ typedef void (^ConnectWithCompletion)(NSString * authenticatedAzStackUserID, NSE
 @optional
 - (void) azUpdateUnreadMessageCount: (int) unreadCount;
 - (UIViewController *) azRequestSelectUsersController: (UIViewController *) chatController;
+- (void) azRequestShowChatViewController: (UIViewController *) chatController;
 @end
 
 @protocol AzCallDelegate <NSObject>
@@ -46,8 +45,6 @@ typedef void (^ConnectWithCompletion)(NSString * authenticatedAzStackUserID, NSE
 
 + (AzStackManager*)instance;
 
-@property (nonatomic, weak) id<AzAuthenticationDelegate> azAuthenticationDelegate;
-
 @property (nonatomic, weak) id<AzUserInfoDelegate> azUserInfoDelegate;
 
 @property (nonatomic, weak) id<AzChatDelegate> azChatDelegate;
@@ -56,21 +53,27 @@ typedef void (^ConnectWithCompletion)(NSString * authenticatedAzStackUserID, NSE
 
 - (void) setAppId: (NSString *) appId;
 
+- (void) setPublicKey: (NSString *) publicKey;
+
+- (void) connectWithAzStackUserId: (NSString *) azStackUserID userCredentials: (NSString *) userCredentials fullname: (NSString *)fullname completion: (ConnectWithCompletion)blockProcessResult;
+
+- (void) updateFullnameForPushNotification: (NSString *) name;
+
+- (void) updateUserInfo: (NSDictionary *) userInfo;
+
 - (void) setTintColorNavigationBar: (UIColor *) tintColorNav;
 
 - (void) setLanguage: (NSString *) language;
 
 - (void) setDebugLog: (BOOL) logEnable;
 
+- (void) setHiddenButtonCallInChatNavigationBar: (BOOL) hidden;
+
 - (void) initial;
 
 - (void) settingMessageNotification:(NSDictionary *) dicSetting;
 
 - (NSDictionary *) getCurrentMessageNotificationSetting;
-
-- (void) connectWithCompletion:(ConnectWithCompletion) blockProcessResult;
-
-- (void) authenticateWithIdentityToken: (NSString *) identityToken;
 
 - (UIViewController *) chatWithUser: (NSString *) azStackUserId withUserInfo: (NSDictionary *) userInfo;
 
@@ -79,8 +82,6 @@ typedef void (^ConnectWithCompletion)(NSString * authenticatedAzStackUserID, NSE
 - (UIViewController *) createChatGroup;
 
 - (UIViewController *) createChat11;
-
-- (void) doneSelectUsers: (UIViewController *) chatController withListAzStackUsers: (NSArray *) listAzStackUsers;
 
 - (void) sendUserInfoToAzStack:(NSArray *) userInfos withTarget: (int) target;
 
@@ -92,20 +93,23 @@ typedef void (^ConnectWithCompletion)(NSString * authenticatedAzStackUserID, NSE
 
 - (void) callWithUser: (NSString *)azStackUserId;
 
-- (void) setServerType: (int) serverType;
+- (void) doneSelectUsers: (UIViewController *) chatController withListAzStackUsers: (NSArray *) listAzStackUsers;
 
 - (void) registerForRemoteNotificationsWithDeviceToken: (NSData *) deviceToken;
-
 - (void) processLocalNotify: (UILocalNotification *)notif;
-
 - (void) processRemoteNotify:(NSDictionary *)userInfo;
-
-- (void) setHiddenButtonCallInChatNavigationBar: (BOOL) hidden;
-
+- (void) unregisterPushNotification;
+//
 - (void) disconnectAzServer;
-
 - (void) clearAllAzData;
-
 - (void) disconnectAndClearAllData;
+//
+- (void) getBlockUserInfo: (NSString *) azStackUserId withCompleteHandler: (GetBlockUserInfoWithComplete) handler;
+//
+- (void) changeBlockInfoForUser: (NSString *) azStackUserId withBlockInfo: (int) blockInfo withCompleteHandler: (BlockUnblockUserWithComplete) handler;
+//
+- (void) getListBlockUserWithCompleteHandler: (GetListBlockUserWithComplete) handler;
 
+//
+-(void) callOutWithPhone: (NSString *) phoneNumber withUserInfo: (NSDictionary *) userInfo;
 @end
