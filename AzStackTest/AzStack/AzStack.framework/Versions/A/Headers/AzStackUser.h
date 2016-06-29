@@ -16,5 +16,7 @@
 @property (nonatomic, strong) NSString* phoneNumber;
 @property (nonatomic, strong) NSString* statusMessage;
 @property (nonatomic, strong) NSString * azStackUserId;
+@property (nonatomic, assign) int statusOnline;
+@property (nonatomic, assign) int lastOnline;
 
 @end

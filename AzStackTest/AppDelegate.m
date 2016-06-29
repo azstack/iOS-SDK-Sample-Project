@@ -18,7 +18,6 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -42,7 +41,7 @@
     azStackTestController.title = @"Authenticating ...";
     
     // CONNECT
-    [[AzStackManager instance] connectWithAzStackUserId:@"user1" userCredentials:@"user1_credentials" fullname:@"user1" completion:^(NSString *authenticatedAzStackUserID, NSError *error, BOOL successful) {
+    [[AzStackManager instance] connectWithAzStackUserId:@"user1" userCredentials:@"phunv_credentials" fullname:@"User 1" completion:^(NSString *authenticatedAzStackUserID, NSError *error, BOOL successful) {
         if (successful) {
             NSLog(@"Authent successful, authenticatedAzStackUserID: %@", authenticatedAzStackUserID);
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -53,8 +52,12 @@
         }
     }];
     
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-200, -200) forBarMetrics:UIBarMetricsDefault];
+    }
+    
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:azStackTestController];
-    navController.navigationBar.translucent = YES;
+    navController.navigationBar.translucent = NO;
     
     self.window.rootViewController = navController;
     self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];

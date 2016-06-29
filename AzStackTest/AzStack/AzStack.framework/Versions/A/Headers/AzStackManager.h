@@ -13,6 +13,7 @@
 #define AZSERVER_TEST 2
 
 @class AzStackUser;
+@class AzChatRoom;
 
 typedef void (^ConnectWithCompletion)(NSString * authenticatedAzStackUserID, NSError * error, BOOL successful);
 typedef void (^GetBlockUserInfoWithComplete)(NSString * azStackUserId, int blockType, NSError * error);
@@ -23,8 +24,10 @@ typedef void (^GetListBlockUserWithComplete)(NSArray * listAzUserIdsBlocked, NSE
 @required
 - (void) azRequestUserInfo: (NSArray *) azStackUserIds withTarget: (int) target;
 @optional
-- (NSArray *) azRequestListUser;
+- (NSArray *) azRequestFriendList;
 - (UIViewController *) azRequestUserInfoController: (AzStackUser *) user withAzStackUserId: (NSString *) azStackUserId;
+- (void) azFinishGetUserInfo: (NSString *) azStackUserId withUser: (AzStackUser *) user;
+- (void) azFinishLoadRecentUsers: (NSArray *) arrays;
 @end
 
 @protocol AzChatDelegate <NSObject>
@@ -34,6 +37,8 @@ typedef void (^GetListBlockUserWithComplete)(NSArray * listAzUserIdsBlocked, NSE
 - (void) azUpdateUnreadMessageCount: (int) unreadCount;
 - (UIViewController *) azRequestSelectUsersController: (UIViewController *) chatController;
 - (void) azRequestShowChatViewController: (UIViewController *) chatController;
+- (void) azCustomChatNavigationBar: (UIViewController *) chatController;
+- (void) azDidSelectChatRoom: (AzChatRoom *) chatRoom;
 @end
 
 @protocol AzCallDelegate <NSObject>
@@ -93,6 +98,10 @@ typedef void (^GetListBlockUserWithComplete)(NSArray * listAzUserIdsBlocked, NSE
 
 - (void) callWithUser: (NSString *)azStackUserId;
 
+- (void) callVideoWithUser: (NSString *) azStackUserId withUserInfo: (NSDictionary *) userinfo;
+
+- (void) callVideoWithUser: (NSString *)azStackUserId;
+
 - (void) doneSelectUsers: (UIViewController *) chatController withListAzStackUsers: (NSArray *) listAzStackUsers;
 
 - (void) registerForRemoteNotificationsWithDeviceToken: (NSData *) deviceToken;
@@ -112,4 +121,13 @@ typedef void (^GetListBlockUserWithComplete)(NSArray * listAzUserIdsBlocked, NSE
 
 //
 -(void) callOutWithPhone: (NSString *) phoneNumber withUserInfo: (NSDictionary *) userInfo;
+-(void) callOutWithPhone: (NSString *) phoneNumber fromNumber: (NSString *) fromNumber withUserInfo: (NSDictionary *) userInfo;
+//
+- (UIViewController*) getChatRooms;
+//
+
+- (AzStackUser *) getAzUser: (NSString *) azStackUserId;
+
+- (NSArray *) getRecentAzUsersList;
+
 @end

@@ -54,14 +54,16 @@ static ThirdPartyImplement *ins;
     [[AzStackManager instance] sendUserInfoToAzStack:userInfoArrays withTarget:target];
 }
 
+
+
 - (NSArray *) azRequestFriendList{
     NSMutableArray * users = [[NSMutableArray alloc] init];
     AzStackUser * user1 = [[AzStackUser alloc] init];
-    user1.fullname = @"User 1";
+    user1.fullname = @"user1";
     user1.azStackUserId = @"user1";
     
     AzStackUser * user2 = [[AzStackUser alloc] init];
-    user2.fullname = @"User 2";
+    user2.fullname = @"user2";
     user2.azStackUserId = @"user2";
     
     AzStackUser * user3 = [[AzStackUser alloc] init];
@@ -80,17 +82,12 @@ static ThirdPartyImplement *ins;
     user6.fullname = @"User 6";
     user6.azStackUserId = @"user6";
     
-    AzStackUser * user7 = [[AzStackUser alloc] init];
-    user7.fullname = @"phunv";
-    user7.azStackUserId = @"phunv";
-    
     [users addObject:user1];
     [users addObject:user2];
     [users addObject:user3];
     [users addObject:user4];
     [users addObject:user5];
     [users addObject:user6];
-    [users addObject:user7];
     
     return users;
 }
