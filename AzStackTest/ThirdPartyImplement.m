@@ -59,11 +59,11 @@ static ThirdPartyImplement *ins;
 - (NSArray *) azRequestFriendList{
     NSMutableArray * users = [[NSMutableArray alloc] init];
     AzStackUser * user1 = [[AzStackUser alloc] init];
-    user1.fullname = @"user1";
+    user1.fullname = @"User 1";
     user1.azStackUserId = @"user1";
     
     AzStackUser * user2 = [[AzStackUser alloc] init];
-    user2.fullname = @"user2";
+    user2.fullname = @"User 2";
     user2.azStackUserId = @"user2";
     
     AzStackUser * user3 = [[AzStackUser alloc] init];

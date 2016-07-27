@@ -41,7 +41,7 @@
     azStackTestController.title = @"Authenticating ...";
     
     // CONNECT
-    [[AzStackManager instance] connectWithAzStackUserId:@"user1" userCredentials:@"phunv_credentials" fullname:@"User 1" completion:^(NSString *authenticatedAzStackUserID, NSError *error, BOOL successful) {
+    [[AzStackManager instance] connectWithAzStackUserId:@"ios_user1" userCredentials:@"ios_user1_credentials" fullname:@"iOS User 1" completion:^(NSString *authenticatedAzStackUserID, NSError *error, BOOL successful) {
         if (successful) {
             NSLog(@"Authent successful, authenticatedAzStackUserID: %@", authenticatedAzStackUserID);
             dispatch_async(dispatch_get_main_queue(), ^{
