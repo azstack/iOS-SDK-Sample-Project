@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF4824F41D55DA4E000079C8 /* AzStackCall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4824F31D55DA4E000079C8 /* AzStackCall.a */; };
 		BF56D7211D23AB2A0026B9E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF56D7201D23AB2A0026B9E9 /* main.m */; };
 		BF56D7241D23AB2A0026B9E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF56D7231D23AB2A0026B9E9 /* AppDelegate.m */; };
 		BF56D72C1D23AB2A0026B9E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF56D72B1D23AB2A0026B9E9 /* Assets.xcassets */; };
@@ -38,13 +39,13 @@
 		BF56D7691D23AB5F0026B9E9 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF56D74F1D23AB5F0026B9E9 /* MediaPlayer.framework */; };
 		BF56D76A1D23AB5F0026B9E9 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF56D7501D23AB5F0026B9E9 /* libsqlite3.0.dylib */; };
 		BF56D76F1D23ABFE0026B9E9 /* AzStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF56D76C1D23ABFE0026B9E9 /* AzStack.framework */; };
-		BF56D7701D23ABFE0026B9E9 /* AzStackCall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF56D76D1D23ABFE0026B9E9 /* AzStackCall.a */; };
 		BF56D7711D23ABFE0026B9E9 /* AzStackRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF56D76E1D23ABFE0026B9E9 /* AzStackRes.bundle */; };
 		BF56D7761D23AC830026B9E9 /* AzStackTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF56D7731D23AC830026B9E9 /* AzStackTestController.m */; };
 		BF56D7771D23AC830026B9E9 /* ThirdPartyImplement.m in Sources */ = {isa = PBXBuildFile; fileRef = BF56D7751D23AC830026B9E9 /* ThirdPartyImplement.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF4824F31D55DA4E000079C8 /* AzStackCall.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AzStackCall.a; sourceTree = "<group>"; };
 		BF56D71C1D23AB2A0026B9E9 /* AzStackTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzStackTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF56D7201D23AB2A0026B9E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF56D7221D23AB2A0026B9E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -79,7 +80,6 @@
 		BF56D74F1D23AB5F0026B9E9 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BF56D7501D23AB5F0026B9E9 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		BF56D76C1D23ABFE0026B9E9 /* AzStack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AzStack.framework; sourceTree = "<group>"; };
-		BF56D76D1D23ABFE0026B9E9 /* AzStackCall.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AzStackCall.a; sourceTree = "<group>"; };
 		BF56D76E1D23ABFE0026B9E9 /* AzStackRes.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AzStackRes.bundle; sourceTree = "<group>"; };
 		BF56D7721D23AC830026B9E9 /* AzStackTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzStackTestController.h; sourceTree = "<group>"; };
 		BF56D7731D23AC830026B9E9 /* AzStackTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzStackTestController.m; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 				BF56D7691D23AB5F0026B9E9 /* MediaPlayer.framework in Frameworks */,
 				BF56D7631D23AB5F0026B9E9 /* SystemConfiguration.framework in Frameworks */,
 				BF56D7601D23AB5F0026B9E9 /* CoreText.framework in Frameworks */,
-				BF56D7701D23ABFE0026B9E9 /* AzStackCall.a in Frameworks */,
+				BF4824F41D55DA4E000079C8 /* AzStackCall.a in Frameworks */,
 				BF56D7681D23AB5F0026B9E9 /* CFNetwork.framework in Frameworks */,
 				BF56D7511D23AB5F0026B9E9 /* libicucore.tbd in Frameworks */,
 				BF56D75B1D23AB5F0026B9E9 /* MobileCoreServices.framework in Frameworks */,
@@ -205,8 +205,8 @@
 		BF56D76B1D23ABFE0026B9E9 /* AzStack */ = {
 			isa = PBXGroup;
 			children = (
+				BF4824F31D55DA4E000079C8 /* AzStackCall.a */,
 				BF56D76C1D23ABFE0026B9E9 /* AzStack.framework */,
-				BF56D76D1D23ABFE0026B9E9 /* AzStackCall.a */,
 				BF56D76E1D23ABFE0026B9E9 /* AzStackRes.bundle */,
 			);
 			path = AzStack;

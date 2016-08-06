@@ -118,12 +118,10 @@ typedef void (^GetListBlockUserWithComplete)(NSArray * listAzUserIdsBlocked, NSE
 - (void) changeBlockInfoForUser: (NSString *) azStackUserId withBlockInfo: (int) blockInfo withCompleteHandler: (BlockUnblockUserWithComplete) handler;
 //
 - (void) getListBlockUserWithCompleteHandler: (GetListBlockUserWithComplete) handler;
-
-//
--(void) callOutWithPhone: (NSString *) phoneNumber withUserInfo: (NSDictionary *) userInfo;
--(void) callOutWithPhone: (NSString *) phoneNumber fromNumber: (NSString *) fromNumber withUserInfo: (NSDictionary *) userInfo;
 //
 - (UIViewController*) getChatRooms;
+//
+- (UIViewController*) getChannelListController;
 //
 
 - (AzStackUser *) getAzUser: (NSString *) azStackUserId;

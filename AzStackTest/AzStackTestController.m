@@ -12,7 +12,7 @@
     [super viewDidLoad];
     
 //    self.title = @"AzStack Test";
-    self.tableCells = @[@"Chat with user2", @"Group chat", @"Create Group", @"Chat History",@"Call user2", @"Chat Room", @"Video call user2"];
+    self.tableCells = @[@"Chat with user2", @"Group chat", @"Create Group", @"Chat History",@"Call user2", @"Video call user2"];
  
     [ThirdPartyImplement instance].navForChatController = self.navigationController;
     
@@ -52,11 +52,9 @@
         [self.navigationController pushViewController:[[AzStackManager instance] createChatGroup] animated:YES];
     } else if (indexPath.row == 3) {//chat history
         [self.navigationController pushViewController:[[AzStackManager instance] getChattingHistory] animated:YES];
-    } else if (indexPath.row == 4){//call user2
+    } else if (indexPath.row == 4){//audio call user2
         [[AzStackManager instance] callWithUser:@"user2" withUserInfo:@{@"name": @"User 2"} ];
-    } else if (indexPath.row == 5){
-        [self.navigationController pushViewController:[[AzStackManager instance] getChatRooms] animated:YES];
-    } else if (indexPath.row == 6){
+    } else if (indexPath.row == 5){// video call user2
         [[AzStackManager instance] callVideoWithUser:@"user2" withUserInfo:@{@"name": @"User 2"}];
     }
 }
